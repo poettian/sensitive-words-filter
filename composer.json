@@ -1,0 +1,20 @@
+{
+    "name": "poettian/sensitive-words-filter",
+    "type": "library",
+    "description": "Sensitive words identify and filter",
+    "keywords": ["sensitive words"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "poettian",
+            "email": "poettian@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "predis/predis": "^1.1"
+    },
+    "autoload": {
+        "psr-4": { "Poettian\\Filter\\": "" }
+    }
+}
