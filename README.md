@@ -83,6 +83,8 @@ DFA算法
 
 #### 实测结果
 
+**环境**：Mac PHP + 虚拟机 Redis
+
 **词库**：16838 lines
 
 **输入**：476 字
@@ -101,7 +103,27 @@ DFA算法
 
 #### 安装和使用
 
+`composer require poettian/sensitive-words-filter`
 
+```php
+require './vendor/autoload.php';
+
+// 第一个参数数组为 Predis 的连接参数，第二个参数对应上面各个不同的方案[simple|index|participle|dfa]
+$filter = new Poettian\Filter\Filter([
+    'host' => '192.168.10.10',
+    'port' => 6379,
+    'password' => 'secret',
+], 'dfa');
+
+/*
+读取词库文件，写入redis，不传则使用data目录下的词库。当词库较大时，此方法存在性能问题，下面会讲述
+此方法只需执行一次
+*/
+$filter->build($dict);
+
+// 过滤输入内容
+echo $filter->run($content);
+```
 
 #### 待优化内容
 
