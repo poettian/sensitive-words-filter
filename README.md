@@ -119,7 +119,13 @@ $filter = new Poettian\Filter\Filter([
 读取词库文件，写入redis，不传则使用data目录下的词库。当词库较大时，此方法存在性能问题，下面会讲述
 此方法只需执行一次
 */
-$filter->build($dict);
+$filter->build('/tmp/sensitive_dict');
+
+// 增加敏感词
+$filter->add('敏感词一');
+$filter->add('敏感词二');
+$filter->add('敏感词三');
+//...
 
 // 过滤输入内容
 echo $filter->run($content);
